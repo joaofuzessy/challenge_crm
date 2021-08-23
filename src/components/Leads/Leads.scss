@@ -5,6 +5,8 @@
     flex-wrap: wrap;
     height: calc(100vh - 125px);
     overflow: scroll;
+    width: 100%;
+    
     .pageTitle{
         width: 100%;
         display: flex;
@@ -13,8 +15,11 @@
     .cardsWrapper{
         display: flex;
         flex-wrap: wrap;
-        flex-direction: row;
+        align-items: flex-start;
+        flex-direction: column;
         width: 100%;
+        min-height: 100%;
+
         ul{
             list-style: none;
             width: 100%;
@@ -27,6 +32,9 @@
             }
         }
 
+    }
+    .pageTitleWrapper{
+        width: 100%;
     }
     .loaderWrapper{
         width: 100%;

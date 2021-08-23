@@ -3,13 +3,19 @@ import uuid from 'react-uuid';
 import { getLeads } from '../../services/requests';
 import Loader from 'react-loader-spinner';
 import Card from '../Card/Card';
-
+import SearchBar from '../SearchBar/SearchBar';
 import './Leads.scss';
 
 function Leads() {
     const [leadsList, setLeadsList] = useState([]);
+    const [filteredList, setFilteredList] = useState([]);
     const [isloading, setIsLoading] = useState([true]);
     const [errorMessage, setErrorMeassage] = useState(['']);
+
+
+    const filterLeads = (leads) => {
+        setFilteredList(leads);
+    }
 
     const renderLoader = () => {
         return(
@@ -24,12 +30,13 @@ function Leads() {
         )
     }
 
-    const renderCards = useCallback(() => {
+    const renderCards = useCallback((filtered) => {
             return(
-                <div class="cardsWrapper">
+                <div className="cardsWrapper">
+                    <SearchBar allData={leadsList} filterLeads={filterLeads}></SearchBar>
                     <ul>
                         { 
-                            leadsList.map((lead) => {
+                            filtered.map((lead) => {
                                 return(
                                     <li key={uuid()}>
                                         <Card lead={lead} hasFooter={true}></Card>
@@ -43,8 +50,10 @@ function Leads() {
     }, [leadsList])
 
     const loadData = async() => {
+        setIsLoading(true);
         const response = await getLeads();
         setLeadsList(response);
+        setFilteredList(response);
         setIsLoading(false);
     }
 
@@ -54,8 +63,8 @@ function Leads() {
 
     return (
         <div className="Leads">
-            <h1 className="pageTitle">Leads</h1>
-            {isloading? renderLoader() : renderCards()}
+            <div className="pageTitleWrapper"><h1 className="pageTitle">Leads</h1></div>
+            {isloading? renderLoader() : renderCards(filteredList)}
         </div>
     )
 }
