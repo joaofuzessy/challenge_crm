@@ -1,0 +1,38 @@
+.Leads{
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    height: calc(100vh - 125px);
+    overflow: scroll;
+    .pageTitle{
+        width: 100%;
+        display: flex;
+        padding: 0 50px;
+    }
+    .cardsWrapper{
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        width: 100%;
+        ul{
+            list-style: none;
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            
+            li{
+                margin: 0 30px 10px 0;
+                width: 30%;
+            }
+        }
+
+    }
+    .loaderWrapper{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 50%;
+    }
+}

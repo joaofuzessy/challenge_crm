@@ -1,0 +1,8 @@
+@import './../../constants/colors';
+
+.Stage {
+    background-color: $lightGray;
+    height: 100vh;
+    display: flex;
+    flex-wrap: wrap;
+}
