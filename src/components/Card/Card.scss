@@ -49,4 +49,10 @@
     .bold{
         font-weight: bold;
     }
+    .score{
+        color: $failRed;
+        &.eligible{
+            color: $successGreen;
+        }
+    }
 }

@@ -3,6 +3,7 @@ import { getLeads } from './requests'
 
 const initialState = {
   leadsList: [],
+  prospectsList: [],
   status: 'idle',
   error: null
 }

@@ -27,7 +27,8 @@ function Card(props) {
     }
 
     const handleAddProspect = () => {
-        dispatch(LeadListActions.addToProspectList(lead));
+        dispatch(LeadListActions.addToProspectsList(lead));
+        dispatch(LeadListActions.removeFromLeadsList(lead));
     }
 
     const getScore = () =>{
@@ -61,6 +62,7 @@ function Card(props) {
                     </div>
                     <ReactTooltip />
                 </div>
+                <p className={`score ${leadScore > 60 && "eligible"}`}><span className={`bold`}>Score:</span> {leadScore? leadScore : "No score yet"}</p>
                 <p><span className="bold">Document:</span> {lead._id}</p>
                 <p><span className="bold">Birth Date:</span> {lead.birthDate}</p>
                 <p><span className="bold">Gender:</span> {lead.gender}</p>

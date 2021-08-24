@@ -8,7 +8,7 @@ import Card from '../Card/Card';
 import './Prospects.scss';
 
 function Prospects() {
-    const prospectsList = useSelector(state => state.prospectList);
+    const prospectsList = useSelector(state => state.leads.prospectsList);
 
     
     const renderEmptyMessage = () =>{
