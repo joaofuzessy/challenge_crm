@@ -4,8 +4,9 @@
     justify-content: flex-start;
     flex-wrap: wrap;
     height: calc(100vh - 125px);
-    overflow: scroll;
-    width: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    width: 95%;
     
     .pageTitle{
         width: 100%;

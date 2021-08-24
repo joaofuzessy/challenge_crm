@@ -1,17 +1,21 @@
 import React, { useCallback, useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import uuid from 'react-uuid';
 import { getLeads } from '../../services/requests';
 import Loader from 'react-loader-spinner';
 import Card from '../Card/Card';
 import SearchBar from '../SearchBar/SearchBar';
+import loadleads from '../../services/leadsSlice';
 import './Leads.scss';
+import { filter } from 'minimatch';
 
 function Leads() {
-    const [leadsList, setLeadsList] = useState([]);
-    const [filteredList, setFilteredList] = useState([]);
-    const [isloading, setIsLoading] = useState([true]);
+    const leadsList = useSelector(state => state.leads.leadsList);
+    const status = useSelector(state => state.leads.status);
+    const [filteredList, setFilteredList] = useState(leadsList);
     const [errorMessage, setErrorMeassage] = useState(['']);
-
+    const dispatch = useDispatch();
 
     const filterLeads = (leads) => {
         setFilteredList(leads);
@@ -30,13 +34,13 @@ function Leads() {
         )
     }
 
-    const renderCards = useCallback((filtered) => {
+    const renderCards = useCallback(() => {
             return(
                 <div className="cardsWrapper">
                     <SearchBar allData={leadsList} filterLeads={filterLeads}></SearchBar>
                     <ul>
                         { 
-                            filtered.map((lead) => {
+                            filteredList.map((lead) => {
                                 return(
                                     <li key={uuid()}>
                                         <Card lead={lead} hasFooter={true}></Card>
@@ -47,24 +51,18 @@ function Leads() {
                     </ul>
                 </div>
             )
-    }, [leadsList])
-
-    const loadData = async() => {
-        setIsLoading(true);
-        const response = await getLeads();
-        setLeadsList(response);
-        setFilteredList(response);
-        setIsLoading(false);
-    }
+    }, [leadsList, filteredList])
 
     useEffect(() => {
-        loadData();
-    }, []);
+        if (status === 'idle') {
+          dispatch(loadleads());
+        }
+      }, [status, dispatch]);
 
     return (
         <div className="Leads">
             <div className="pageTitleWrapper"><h1 className="pageTitle">Leads</h1></div>
-            {isloading? renderLoader() : renderCards(filteredList)}
+            {status === 'loading'? renderLoader() : renderCards()}
         </div>
     )
 }

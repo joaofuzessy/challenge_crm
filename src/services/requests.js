@@ -6,8 +6,12 @@ const API_NATIONAL_REGISTRY_URL = "https://my-json-server.typicode.com/joaofuzes
 
 //Functions
 export const getLeads = async (id=0) => {
+    try{
         const leads = await axios.get(id? `${API_NATIONAL_REGISTRY_URL}/citizens?_id=${id}` : `${API_NATIONAL_REGISTRY_URL}/citizens`)
         return leads.data;
+    }catch(error){
+        Promise.reject(error);
+    }
 }
 
 export const getProspects= async (id=0) => {
