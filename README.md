@@ -76,4 +76,6 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
  -> Uncouple and modularize better some components, possibly creating a folder structure to agreggate those that can only be reused in specific contexts, or even Atomic Design - it will depend on how the app scales;
 
- --> Tests
+--> Tests
+
+--> Make sure Prospects are persisted and retrieved from a database, since currently it works only for interface demonstration purposes. Possibly use a complete Slice instead of only a single reducer to add them to localStorage. Likewise, the Leads Database should be updated and persisted - Currently this data is stubbed from a simple external JSON.
