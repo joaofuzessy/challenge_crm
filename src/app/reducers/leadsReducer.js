@@ -6,9 +6,9 @@ import {
 const prospectList = createReducer([], {
  [addToProspectList]: (state, action) => {
    const { payload } = action;
-   const { id } = payload;
+   const { _id } = payload;
  
-   const leadExists = state.find(lead => lead.id === id);
+   const leadExists = state.find(lead => lead._id === _id);
   
    if (!leadExists) {
      return [...state, payload]

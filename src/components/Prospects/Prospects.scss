@@ -4,7 +4,12 @@
     justify-content: flex-start;
     flex-wrap: wrap;
     height: calc(100vh - 125px);
-    overflow: scroll;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    width: 95%;
+    .Card{
+        height: 200px;
+    }
     .pageTitle{
         width: 100%;
         display: flex;
@@ -13,8 +18,11 @@
     .cardsWrapper{
         display: flex;
         flex-wrap: wrap;
-        flex-direction: row;
+        align-items: flex-start;
+        flex-direction: column;
         width: 100%;
+        min-height: 100%;
+
         ul{
             list-style: none;
             width: 100%;
@@ -23,10 +31,13 @@
             
             li{
                 margin: 0 30px 10px 0;
-                width: 30%;
+                width: calc(30% - 20px);
             }
         }
 
+    }
+    .pageTitleWrapper{
+        width: 100%;
     }
     .loaderWrapper{
         width: 100%;

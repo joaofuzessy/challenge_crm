@@ -16,5 +16,15 @@
             background-color: $white;
             color: $black;
         }
+        &:disabled{
+            pointer-events: none;
+            opacity: 0.15;
+        }
+        &.icon{
+            background-color: transparent;
+            border-color: transparent;
+            color: $addiBlue;
+            font-size: 1.4em;
+        }
     }
 }

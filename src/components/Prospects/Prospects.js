@@ -1,61 +1,49 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback } from 'react';
+import { useSelector } from 'react-redux';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faInfoCircle } from '@fortawesome/free-solid-svg-icons'
 import uuid from 'react-uuid';
-import { getProspects } from '../../services/requests';
-import Loader from 'react-loader-spinner';
 import Card from '../Card/Card';
 
 import './Prospects.scss';
 
 function Prospects() {
-    const [prospectsList, setProspectsList] = useState([]);
-    const [isloading, setIsLoading] = useState([true]);
-    const [errorMessage, setErrorMeassage] = useState(['']);
+    const prospectsList = useSelector(state => state.prospectList);
 
-    const renderLoader = () => {
+    
+    const renderEmptyMessage = () =>{
         return(
-            <div className="loaderWrapper">
-                <Loader
-                type="Puff"
-                color="#00BFFF"
-                height={50}
-                width={50}
-                />
-            </div>
+            <h4>
+                <FontAwesomeIcon icon={faInfoCircle}></FontAwesomeIcon>
+                <span> There are no prospects registered at the moment.</span>
+            </h4>
         )
     }
 
     const renderCards = useCallback(() => {
             return(
-                <div class="cardsWrapper">
+                <div className="cardsWrapper">
                     <ul>
                         { 
-                            prospectsList.map((lead) => {
+                            prospectsList.length
+                            ?prospectsList.map((lead) => {
                                 return(
                                     <li key={uuid()}>
-                                        <Card lead={lead} hasFooter={true}></Card>
+                                        <Card lead={lead} hasFooter={false}></Card>
                                     </li>
                                 );
                             })
+                            :renderEmptyMessage()
                         }
                     </ul>
                 </div>
             )
     }, [prospectsList])
 
-    const loadData = async() => {
-        const response = await getProspects();
-        setProspectsList(response);
-        setIsLoading(false);
-    }
-
-    useEffect(() => {
-        loadData();
-    }, []);
-
     return (
         <div className="Prospects">
             <h1 className="pageTitle">Prospects</h1>
-            {isloading? renderLoader() : renderCards()}
+            {renderCards()}
         </div>
     )
 }

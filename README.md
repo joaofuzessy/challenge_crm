@@ -68,3 +68,10 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+###Possible Improvements
+
+ -> Manage the validation status via redux, in order to assure it will behave more user friendly when dealing with larger databases;
+
+ -> Uncouple and modularize better some components, possibly creating a folder structure to agreggate those that can only be reused in specific contexts, or even Atomic Design - it will depend on how the app scales;

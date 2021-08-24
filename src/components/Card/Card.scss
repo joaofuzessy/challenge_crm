@@ -4,13 +4,27 @@
     border-radius: 20px;
     background-color: $white;
     width: 95%;
-    height: 230px;
+    height: 290px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: space-between;
     padding: 10% 5%;
-    
+    .cardHeader{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        height: 50px;
+        .Button{
+            margin-top: -40px;
+            margin-right: -15px;
+        }
+        h3{
+            margin: 0 0 10px;
+        }
+    }
     .cardBody{
         display: flex;
         flex-direction: column;
@@ -25,9 +39,6 @@
         & > div{
             margin-right: 10px;
         }
-    }
-    h3{
-        margin: 0 0 10px;
     }
     p{
         padding: 0;

@@ -1,0 +1,13 @@
+@import '../../constants/colors';
+
+.ValidationMessages{
+    margin: 15px 0;
+    font-weight: bold;
+    font-size: 0.8em;
+    .valid{
+        color:$successGreen;
+    }
+    .invalid{
+        color:$failRed;
+    }
+}

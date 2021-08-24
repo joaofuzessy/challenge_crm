@@ -7,6 +7,10 @@ import store from './app/store';
 import { saveState } from './localStorage'
 import { Provider } from 'react-redux';
 
+store.subscribe(() => {
+  saveState(store.getState());
+})
+
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>

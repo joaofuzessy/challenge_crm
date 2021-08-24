@@ -1,4 +1,4 @@
-import React,  { useCallback, useEffect, useState }  from 'react';
+import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import './SearchBar.scss';
@@ -10,10 +10,10 @@ function SearchBar(props) {
         let value = event.target.value.toLowerCase();
         let result = [];
         result = allData.filter((data) => {
-            return data._id.search(value) != -1;
+            return data._id.search(value) !== -1;
         });
 
-        if(result.length){
+        if(value){
             filterLeads(result);
         }
         else{
