@@ -7,11 +7,11 @@ import uuid from 'react-uuid';
 import Loader from 'react-loader-spinner';
 import Card from '../Card/Card';
 import SearchBar from '../SearchBar/SearchBar';
-import loadprospects from '../../services/prospectsSlice';
+import loadProspects from '../../services/prospectsSlice';
 import './Prospects.scss';
 
 function Prospects() {
-    const prospectsList = useSelector(state => state.prospectsList.prospectsList);
+    const prospectsList = useSelector(state => state.prospectsList);
     const status = useSelector(state => state.prospectsList.status);
     const [filteredList, setFilteredList] = useState([]);
     //const [errorMessage, setErrorMeassage] = useState(['']);
@@ -65,7 +65,7 @@ function Prospects() {
 
     useEffect(() => {
         if (status === 'idle') {
-          dispatch(loadprospects());
+          dispatch(loadProspects());
         }
       }, [status, dispatch]);
 

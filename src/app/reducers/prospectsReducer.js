@@ -8,11 +8,10 @@ const prospectsList = createReducer([], {
    const { payload } = action;
    const { _id } = payload;
  
-   const leadExists = state.prospectsList.find(prospect => prospect._id === _id);
+   const leadExists = state.find(prospect => prospect._id === _id);
   
    if (!leadExists) {
-     const prospectsList = {...state.prospectsList}.push(payload);
-     return [...state, prospectsList]
+     return [...state, payload]
    }
  }
 });

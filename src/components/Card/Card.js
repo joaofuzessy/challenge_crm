@@ -6,7 +6,7 @@ import { faUserTag } from '@fortawesome/free-solid-svg-icons'
 import ValidationMessages from '../ValidationMessages/ValidationMessages';
 import Button from '../Button/Button';
 import { checkNationalBase, checkOcurrences } from '../../services/requests';
-import * as LeadListActions from '../../app/actions/leadsActions';
+import * as LeadListActions from '../../services/leadsSlice';
 import * as ProspectsListActions from '../../app/actions/prospectsActions';
 import ReactTooltip from 'react-tooltip';
 import './Card.scss';

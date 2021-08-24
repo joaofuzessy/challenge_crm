@@ -15,9 +15,8 @@ export const getLeads = async (id=0) => {
     }
 }
 
-export const getProspects= async (id=0) => {
-    const leads = localStorage.getItem('state')
-    return leads['prospectsList']['prospectsList'];
+export const getProspects = () => {
+    return JSON.parse(window.localStorage.getItem('state'))['prospectsList']['prospectsList'];
 }
 
 export const checkNationalBase = async (lead) => {

@@ -1,8 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { combineReducers } from 'redux';
 import { loadState } from '../localStorage'
-import leadsList, { loadleads } from '../services/leadsSlice' 
-import prospectsList, { loadProspects } from '../services/prospectsSlice' 
+import leadsList, { loadleads } from '../services/leadsSlice';
+import prospectsList from '../app/reducers/prospectsReducer' 
 
 const persistedState = loadState();
 
@@ -17,5 +17,4 @@ const store = configureStore(
 )
 
 store.dispatch(loadleads());
-store.dispatch(loadProspects());
 export default store;

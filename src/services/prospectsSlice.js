@@ -16,7 +16,7 @@ export const loadProspects = createAsyncThunk(
 )
 
 const prospectsSlice = createSlice({
-  name: 'prospctsSlice',
+  name: 'prospectsSlice',
   initialState,
   reducers: {
     prospectsLoaded:{

@@ -23,6 +23,16 @@ const leadsSlice = createSlice({
       reducer(state, action){
         state.leadsList.push(action.payload)
       }
+    },
+    removeFromLeadsList(state, action) {
+      const leadIndex = state.leadsList.findIndex(lead => lead._id === action.payload._id);
+
+      if (leadIndex >= 0) {
+       return {
+        ...state, 
+        leadsList: state.leadsList.slice(0, leadIndex).concat(state.leadsList.slice(leadIndex+1))
+       }
+      }
     }
   },
   extraReducers: {
@@ -49,6 +59,6 @@ const leadsSlice = createSlice({
   }
 })
 
-export const { leadsLoaded } = leadsSlice.actions;
+export const { leadsLoaded, removeFromLeadsList } = leadsSlice.actions;
 
 export default leadsSlice.reducer;
