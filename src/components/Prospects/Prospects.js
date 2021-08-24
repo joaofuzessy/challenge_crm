@@ -7,12 +7,10 @@ import uuid from 'react-uuid';
 import Loader from 'react-loader-spinner';
 import Card from '../Card/Card';
 import SearchBar from '../SearchBar/SearchBar';
-import loadProspects from '../../services/prospectsSlice';
 import './Prospects.scss';
 
 function Prospects() {
     const prospectsList = useSelector(state => state.prospectsList);
-    const status = useSelector(state => state.prospectsList.status);
     const [filteredList, setFilteredList] = useState([]);
     //const [errorMessage, setErrorMeassage] = useState(['']);
     const dispatch = useDispatch();
@@ -62,13 +60,6 @@ function Prospects() {
                 </div>
             )
     }
-
-    useEffect(() => {
-        if (status === 'idle') {
-          dispatch(loadProspects());
-        }
-      }, [status, dispatch]);
-
       useEffect(() => {
         setFilteredList(prospectsList);
       }, [prospectsList])
@@ -76,7 +67,7 @@ function Prospects() {
     return (
         <div className="Prospects">
             <div className="pageTitleWrapper"><h1 className="pageTitle">Prospects</h1></div>
-            {status === 'loading'? renderLoader() : renderCards(filteredList)}
+            {renderCards(filteredList)}
         </div>
     )
 }
