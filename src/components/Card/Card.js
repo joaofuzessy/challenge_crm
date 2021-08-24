@@ -12,7 +12,7 @@ import ReactTooltip from 'react-tooltip';
 import './Card.scss';
 
 function Card(props) {
-    const {lead, hasFooter, hasHeaderButton} = props;
+    const {lead, hasFooter, hasHeaderButton, type} = props;
     const [leadMatchesBase, setLeadMatchesBase] = useState(false);
     const [haveOccurrences, setHaveOccurrences] = useState(false);
     const [leadScore, setLeadScore] = useState(0);
@@ -63,7 +63,9 @@ function Card(props) {
                     </div>
                     <ReactTooltip />
                 </div>
-                <p className={`score ${leadScore > 60 && "eligible"}`}><span className={`bold`}>Score:</span> {leadScore? leadScore : "No score yet"}</p>
+                {type !== 'prospects'&& 
+                    <p className={`score ${leadScore > 60 && "eligible"}`}><span className={`bold`}>Score:</span> {leadScore? leadScore : "No score yet"}</p>
+                }
                 <p><span className="bold">Document:</span> {lead._id}</p>
                 <p><span className="bold">Birth Date:</span> {lead.birthDate}</p>
                 <p><span className="bold">Gender:</span> {lead.gender}</p>

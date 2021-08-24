@@ -1,5 +1,4 @@
 import React, {  useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faInfoCircle } from '@fortawesome/free-solid-svg-icons'
@@ -13,24 +12,11 @@ function Prospects() {
     const prospectsList = useSelector(state => state.prospectsList);
     const [filteredList, setFilteredList] = useState([]);
     //const [errorMessage, setErrorMeassage] = useState(['']);
-    const dispatch = useDispatch();
 
     const filterProspects = (prospects) => {
         setFilteredList(prospects);
     }
 
-    const renderLoader = () => {
-        return(
-            <div className="loaderWrapper">
-                <Loader
-                type="Puff"
-                color="#00BFFF"
-                height={50}
-                width={50}
-                />
-            </div>
-        )
-    }
     const renderEmptyMessage = () =>{
         return(
             <h4>
@@ -43,14 +29,14 @@ function Prospects() {
     const renderCards = (filtered) => {
             return(
                 <div className="cardsWrapper">
-                    <SearchBar allData={prospectsList} filterProspects={filterProspects}></SearchBar>
+                    <SearchBar allData={prospectsList} filterLeads={filterProspects}></SearchBar>
                     <ul>
                         { 
                             filtered.length
                             ?filtered.map((lead) => {
                                 return(
                                     <li key={uuid()}>
-                                        <Card lead={lead} hasFooter={false} hasHeaderButton={false}></Card>
+                                        <Card lead={lead} hasFooter={false} hasHeaderButton={false} type={'prospects'}></Card>
                                     </li>
                                 );
                             })
