@@ -7,6 +7,7 @@ import ValidationMessages from '../ValidationMessages/ValidationMessages';
 import Button from '../Button/Button';
 import { checkNationalBase, checkOcurrences } from '../../services/requests';
 import * as LeadListActions from '../../app/actions/leadsActions';
+import * as ProspectsListActions from '../../app/actions/prospectsActions';
 import ReactTooltip from 'react-tooltip';
 import './Card.scss';
 
@@ -27,7 +28,7 @@ function Card(props) {
     }
 
     const handleAddProspect = () => {
-        dispatch(LeadListActions.addToProspectsList(lead));
+        dispatch(ProspectsListActions.addToProspectsList(lead));
         dispatch(LeadListActions.removeFromLeadsList(lead));
     }
 

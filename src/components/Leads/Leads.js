@@ -11,8 +11,8 @@ import loadleads from '../../services/leadsSlice';
 import './Leads.scss';
 
 function Leads() {
-    const leadsList = useSelector(state => state.leads.leadsList);
-    const status = useSelector(state => state.leads.status);
+    const leadsList = useSelector(state => state.leadsList.leadsList);
+    const status = useSelector(state => state.leadsList.status);
     const [filteredList, setFilteredList] = useState([]);
     //const [errorMessage, setErrorMeassage] = useState(['']);
     const dispatch = useDispatch();
